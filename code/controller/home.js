@@ -1,3 +1,4 @@
+
 const HomeService = require('../service/home')
 
 module.exports = {
@@ -19,10 +20,18 @@ module.exports = {
     })
   },
   register: async(ctx, next) => {
+// <<<<<<< bug-fix/css-name
+//     let params = ctx.request.body
+//     let name = params.name
+//     let password = params.password
+//     let res = await HomeService.register(name,password)
+// =======
+    const { app } = ctx
     let params = ctx.request.body
     let name = params.name
     let password = params.password
-    let res = await HomeService.register(name,password)
+    let res = await app.service.home.register(name,password)
+
     if(res.status == "-1"){
       await ctx.render("home/login", res.data)
     }else{

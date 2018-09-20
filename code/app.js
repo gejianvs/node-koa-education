@@ -1,4 +1,5 @@
 const Koa = require('koa')
+
 const path = require('path')
 const bodyParser = require('koa-bodyparser')
 const nunjucks = require('koa-nunjucks-2')
@@ -20,6 +21,13 @@ app.use(nunjucks({
 }));
 
 app.use(bodyParser())
+// =======
+// const app = new Koa()
+// const router = require('./router')
+// const middleware = require('./middleware')
+
+// middleware(app)
+// >>>>>>> master
 router(app)
 app.listen(3000, () => {
   console.log('server is running at http://localhost:3000')
